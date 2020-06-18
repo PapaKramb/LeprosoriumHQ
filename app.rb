@@ -4,6 +4,19 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
+set :database, {adapter: "sqlite3", database: "leprosorium.db"}
+
+class Addpost < ActiveRecord::Base
+end
+
+before do
+end
+
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
+	erb "Hello"
+end
+
+get '/addpost' do
+	@add = Addpost.new
+	erb :addpost
 end
