@@ -1,0 +1,12 @@
+<h2>Добавить пост</h2>
+<form action="/new" method="POST">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Укажите имя</label>
+    <input name="new[email]" type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Ваше сообщение</label>
+    <textarea name="new[content]" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
