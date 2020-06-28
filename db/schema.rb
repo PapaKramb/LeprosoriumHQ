@@ -13,16 +13,17 @@
 ActiveRecord::Schema.define(version: 2020_06_25_110246) do
 
   create_table "Comments", force: :cascade do |t|
-    t.date "created_date"
+    t.integer "post_id"
+    t.datetime "created_date"
     t.text "content"
-    t.text "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_Comments_on_post_id"
   end
 
   create_table "Posts", force: :cascade do |t|
     t.text "email"
-    t.date "created_date"
+    t.datetime "created_date"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
