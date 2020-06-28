@@ -1,9 +1,17 @@
-<h2>Комментарии</h2>
-
+<h2>Страница поста</h2>
+<br>
+<p>
+	<%= @posts['content'] %>
+	<br/>
+	<br/>
+	Added at: <%= @posts['created_date'] %>
+	<br/>
+</p>
+<br>
 <form action="/post/<%= @posts['id'] %>" method="POST">
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Ваше сообщение</label>
     <textarea name="post[content]" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Отправить</button>
-</form>
+</form

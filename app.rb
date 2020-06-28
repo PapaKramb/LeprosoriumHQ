@@ -7,16 +7,16 @@ require 'sinatra/activerecord'
 set :database, {adapter: "sqlite3", database: "leprosorium.db"}
 
 class Post < ActiveRecord::Base
-	has_many :comment
+	has_many :comments
 end
 
 class Comment < ActiveRecord::Base
-	belongs_to :post
+	belongs_to :posts
 end
 
-# before do
-# 	@posts = Post.all
-# end
+before do
+	@posts = Post.all
+end
 
 get '/' do
 	@posts = Post.order('created_at DESC')
@@ -38,17 +38,29 @@ post '/new' do
 	end
 end
 
-get '/comment/:id' do
+# get '/posts/:id' do
+# 	erb :posts
+# end
+
+# post '/posts/:id' do
+# 	erb :posts
+# end
+# get '/post' do
+# 	@comments = Comment.order('created_at DESC')
+# 	erb :post
+# end
+
+get '/post/:id' do
 	@comments = Comment.new
-	erb :comment
+	erb :posts
 end
 
-post '/comment/:id' do
-	@comments = Comment.new params[:comment]
+post '/post/:id' do
+	@comments = Comment.new params[:post]
 	if @comments.save
 		erb "Мы опубликовали Ваш комментарий"
 	else
 		@error = @comments.errors.full_messages.first 
-		erb :comment
+		erb :posts
 	end
 end
